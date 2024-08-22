@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!-- 
+<br/> xuống dòng
+1. h là thẻ tiêu đề, h1 lớn nhất, h2, h3,... chữ nhỏ hơn
+2. p là đoạn văn
+3. img thẻ hình ảnh
+4. a là anchor để neo liên kết
+5. ul, li - unodered list, list item, ol là theo thứ tự số
+6. table kẻ bảng: thead phần đầu: chứa các tiêu đề con thẻ th, 
+tbody phần thân chứa tr là 1 dòng, tr chứa td (nội dung của dòng), số thẻ th = số thẻ td
+7. input nhập text, checkbox, radio
+8. button
+9. div tạo khối bao quanh nội dung
+-->
+<!-- ******************************* -->
+ <!-- Thuộc tính của thẻ HTML(ghi trong thẻ mở: vd <h1> sau khi có thuộc tính ==> <h1 title = "abc"></h1>)
+ 1. title: re chuột vào nội dung được cài thuộc tính sẽ hiện title này
+ 2. style
+ 3. onclick
+ .....
+ *****************************************
+ CSS trong HTML: có 3 cách internal, external, inline
+1. internal:viết trong thẻ của HTML(head, body), ko viết trong thẻ khác
+2. external : tạo new file trong project tên main.css
+3. inline: viết định dạng luôn trong dòng
+******************************************
+CSS selectors
+-dùng trực tiếp vd h1{}
+
+#id: ko nên trùng
+.class dùng cho chung định dạng
+****************************************
+mức độ ưu tiên
+1. giữa in ternal và external ưu tiên cái được gọi sau
+2. ưu tiên tăng dần: *{} univeral, html{} inherited (0) -> tag (1)->.class(10) ->#id (100)->inline(1000)
+3. nếu gọi lại giống nhau thì ưu tiên cái sau
+4.! là important ưu tiên hơn tất cả, nhưng nếu tất cả đều important thì xét điểm
+******************************************
+đặt biến
+:root{
+    a: violet;
+}
+h1{
+    color: var(a);
+}
+h2{
+    color: var(a);
+}
+    h1, h2 màu tím, dễ sửa từ root
+*****************************************
+đơn vị trong CSS
+-->
+<html>
+    <!--Phần đầu-->
+    <head>
+        <title>Học web F8</title>
+        <!-- tiếng việt -->
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css"> 
+        <!-- liên kết đến file main.css (external) -->
+        <!-- internal -->
+        <!-- 
+        <style>
+            ////tag
+            h1 {
+                color: red;
+                font-size: 30px;
+            }
+        </style> -->
+        <style>
+            .box{
+            width:100px;
+            height:100px;
+            background-color:red;
+        }
+            h1{
+                font-size: 60px;
+            }
+            .box{
+                width: 100px;
+                height: 100px;
+                color: black;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 10px;
+                padding: 80px;
+                border: 2px double ;
+                box-sizing: border-box;
+                /* float: right; */
+            }
+            .box1{
+                background-color: pink ;
+                /* margin: 10px 20px 30px 40px; */
+
+            }
+            .box2{
+                background-color: orange;
+                /* margin-left: 20px; */
+                /* border-width: 40px;
+                border-style: solid;
+                border-left-width: 50px;
+                border-color: aquamarine; */
+                /* border:  double 10px green; */
+                /* border-top: 30px double yellow ; */
+            }
+            .box3{
+                background-color: violet;
+                /* margin-top: 20px; */
+                /* padding-top: 30px;
+                padding-left: 50px; */
+                /* padding: 100px; đều 4 bên =100px
+                nếu 2 giá trị thì trên-dưới, trái-phải*/
+                /* padding: 10px 20px 30px 100px;theo chiều kim đồng hồ */
+            }
+            .header{
+                width: 100%;
+                height: 100vh;
+                /* border: 10px double violet;
+
+                /* background-color: yellow;
+                padding: 20px;
+                box-sizing: border-box;
+                border: 10px dashed violet;
+                background-clip: content-box; */
+                /* background-image: url(data:image/jpeg;base64,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),
+                url(https://cdn.shopify.com/s/files/1/1419/7120/products/Tulip_Rainbow_Mix.SHUT_3_b8386d2c-c5e5-40c2-9ca3-73cb3cc7401a.jpg?v=1571439574); */
+                /* background-size: 200px;
+                background-repeat:no-repeat ;
+                background-image: url(https://img6.thuthuatphanmem.vn/uploads/2022/11/18/hinh-anh-tha-tim_024807779.jpg);
+                /* background-image: linear-gradient(0,rgba(255,255,0,.5
+                ),rgba(0,0,255,.5)), url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fmobilecity.vn%2Ftin-tuc%2Ftop-hinh-nen-hoa-tulip-hot-nhat.html&psig=AOvVaw39rDD8hLBHrbE3MxrkYwCQ&ust=1721228279706000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIihkJzpq4cDFQAAAAAdAAAAABAE); */
+                /* background-origin: padding-box; */
+                /* background-position: top 20px right 20px; */  
+                background: url(https://img.thuthuatphanmem.vn/uploads/2018/09/24/hinh-anh-hoa-co-mua-xuan_053003270.jpg) no-repeat center /contain;
+            }
+            .header::after {
+                content: attr(data-tile);
+            }
+            a::after {
+                content:" ("attr(href)")";
+            }
+        </style>
+        
+    </head>
+    <!-- Phần thân -->
+    <body>
+        <div>
+            <a href="https://www.bing.com/images/search?view=detailV2&ccid=Bzhmwek1&id=610DF514B9A54DC58082CAAD9AE106ABED512737&thid=OIP.Bzhmwek1Ell4xvS1acgYQgHaFH&mediaurl=https%3a%2f%2fimg.thuthuatphanmem.vn%2fuploads%2f2018%2f09%2f24%2fhinh-anh-hoa-co-mua-xuan_053003270.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.073866c1e935125978c6f4b569c81842%3frik%3dNydR7asG4Zqtyg%26pid%3dImgRaw%26r%3d0&exph=1105&expw=1600&q=%e1%ba%a3nh+%c4%91%e1%ba%b9p&simid=608037056309654345&FORM=IRPRST&ck=BAE77EC27778F99FA1B42EDB47D4A566&selectedIndex=18&itb=0&ajaxhist=0&ajaxserp=0">Đây là đường dẫn bức ảnh</a>
+            <div class="header" data-tile ="Phần header"></div>
+            <div class="box box1">Box1</div>
+            <div class="box box2">Box2</div>
+            <div class="box box3">Box3</div>
+
+            Xin chào các bạn! 
+            <!-- <h1 title="Tiêu đề">Thành công không đến với kẻ lười biếng</h1> -->
+            <!-- inline -->
+            <h1 title="Tiêu đề" style="color: green; font-size: 30px;">Thành công không đến với kẻ lười biếng</h1>
+            <h1 class="fist-heading">Believe in yourself</h1>
+            <h1 class="fist-heading">Thanks</h1>
+            <h1 id="third">Keep focus</h1>
+            <h1 id="second">Be strong</h1>
+
+            <input name = "gender" type="radio">
+            <input name = "hehe" type="radio">
+            <input name = "gender" type="radio">
+            <!-- cùng name thì chỉ được chọn 1 -->
+
+            <p> Ngày xửa ngày xưa có một nàng công chúa đẹp tuyệt trần tên là Thanh Hoa hihi</p>
+            <img src="https://scontent.fsgn3-1.fna.fbcdn.net/v/t39.30808-6/430987007_3654100078197831_4722012418993524603_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=fy81PpseBcgQ7kNvgHHKDUH&_nc_ht=scontent.fsgn3-1.fna&oh=00_AYBDO8yLcSBQxeR2R38Sck8ybxaC3KwjY_LM09OUgm245w&oe=66988AE4" alt="">
+            <a href="https://www.facebook.com/profile.php?id=100007936244797">Tới trang cá nhân của tôi</a>
+            <ul>
+                <li>HTML, CSS là gì?</li>
+                <li>Cài đặt môi trường</li>
+            
+            </ul>
+            <table>
+                <thead>
+                    <th>STT</th>
+                    <th>Tên</th>
+                    <th>Địa chỉ</th>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Đàng Thị Thanh Hoa</td>
+                        <td>Ninh Thuận</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Đàng Thị Thanh Hương</td>
+                        <td>Ninh Thuận</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Đàng Thị Thanh Huệ</td>
+                        <td>Ninh Thuận</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+/* h1 {
+    color: red;
+    font-size: 30px;
+} */
+ /* class */
+.fist-heading{
+    color:brown;
+    font-size: 50;
+}
+/* id */
+#third{
+    color: blue;
+}
+
+:root{
+    --text-color: red;
+}
